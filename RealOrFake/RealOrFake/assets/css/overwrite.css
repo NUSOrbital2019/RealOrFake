@@ -1,0 +1,25 @@
+﻿h1 {
+    font-size: 32px;
+    color: #373435;
+    font-family: 'source_sans_probold';
+    letter-spacing: 3px;
+    padding-bottom: 10px;
+    text-transform: uppercase;
+    text-align: center !important;
+}
+
+h4 {
+    font-size: 18px;
+    line-height: 24px;
+    color: darkred;
+    font-family: 'source_sans_proregular';
+}
+
+input[type="file"] {
+    display: inline;
+}
+
+.banner .carousel-caption h1 {
+    text-shadow: 2px 2px white;
+    margin-top: 20%;
+}

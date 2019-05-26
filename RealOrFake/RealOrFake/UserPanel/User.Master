@@ -1,0 +1,145 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="User.master.cs" Inherits="RealOrFake.UserPanel.User" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>Real or Fake</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Bootstrap core CSS -->
+    <link href="../assets/css/bootstrap.css" rel="stylesheet">
+    <link href="../assets/css/custom-styles.css" rel="stylesheet">
+    <link href="../assets/css/image-effects.css" rel="stylesheet">
+
+    <!--<link href="../assets/css/normalize.css" rel="stylesheet">-->
+    <link href="../assets/css/component.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/font-awesome.css">
+    <link rel="stylesheet" href="../assets/css/font-awesome-ie7.css">
+
+    <link rel="stylesheet" href="../assets/css/overwrite.css">
+
+    <script src="../assets/js/html5shiv.js"></script>
+    <script src="../assets/js/respond.min.js"></script>
+    <script src="../assets/js/modernizr.custom.js"></script>
+
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+    <style>
+        html {
+            margin: auto;
+            /*width: 65%;*/
+        }
+
+        body {
+            /*background: darkred;*/
+            /*transform: scale(0.8);
+            margin-top: -10% !important;*/
+        }
+
+        .container {
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+
+        .header-wrapper {
+            margin-bottom: 5%;
+            border-radius: 5px 5px 5px 5px;
+        }
+
+        .menu .navbar .nav > li > a {
+            /*color: black;*/
+            color: white;
+            text-shadow: 2px 2px darkred;
+        }
+
+        .navbar, .navbar-collapse.collapse {
+            background: black;
+        }
+
+        .menu .navbar .nav > li {
+            border-bottom: 0px;
+            border-top: 0px;
+        }
+
+        .menu .navbar {
+            /*display: block;*/
+        }
+
+        .site-name h1 {
+            font-family: unset;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="form1" runat="server">
+        <div class="container page-styling">
+            <div class="header-wrapper" style="background-image: url('../assets/img/bags-collage.jpg');">
+                <div class="site-name">
+                    <h1 style="color: darkred; text-shadow: 2px 2px black;">RealOrFake</h1>
+                </div>
+                <div class="menu">
+                    <div class="navbar">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        <div class="navbar-collapse collapse">
+                            <div style="float: left;">
+                                <ul class="nav navbar-nav ">
+                                    <li><a href="Default.aspx">Home</a></li>
+                                    <li><a href="AboutUs.aspx">About Us</a></li>
+                                    <li><a href="Instructions.aspx">Instructions</a></li>
+                                    <li><a href="AuthenticateImage.aspx">Authenticate Image</a></li>
+                                    <li><a href="Faq.aspx">FAQ</a></li>
+                                    <li><a href="ContactUs.aspx">Contact Us</a></li>
+                                </ul>
+                            </div>
+                           
+                        </div>
+                        <!--/.navbar-collapse -->
+
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div>
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+        </div>
+    </form>
+
+    <!-- Bootstrap core JavaScript
+            ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="../assets/js/jquery-1.9.1.js"></script>
+    <script src="../assets/js/bootstrap.js"></script>
+    <script src="../assets/js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+    <script src="../assets/js/masonry.pkgd.min.js"></script>
+    <script src="../assets/js/imagesloaded.js"></script>
+    <script src="../assets/js/classie.js"></script>
+    <script src="../assets/js/AnimOnScroll.js"></script>
+
+    <script>
+        new AnimOnScroll(document.getElementById('grid'), {
+            minDuration: 0.4,
+            maxDuration: 0.7,
+            viewportFactor: 0.2
+        });
+    </script>
+
+</body>
+</html>
