@@ -11,20 +11,20 @@
     <meta name="author" content="">
 
     <!-- Bootstrap core CSS -->
-    <link href="../assets/css/bootstrap.css" rel="stylesheet">
-    <link href="../assets/css/custom-styles.css" rel="stylesheet">
-    <link href="../assets/css/image-effects.css" rel="stylesheet">
+    <link href="../assets_UserPanel/css/bootstrap.css" rel="stylesheet">
+    <link href="../assets_UserPanel/css/custom-styles.css" rel="stylesheet">
+    <link href="../assets_UserPanel/css/image-effects.css" rel="stylesheet">
 
-    <!--<link href="../assets/css/normalize.css" rel="stylesheet">-->
-    <link href="../assets/css/component.css" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/css/font-awesome.css">
-    <link rel="stylesheet" href="../assets/css/font-awesome-ie7.css">
+    <!--<link href="../assets_UserPanel/css/normalize.css" rel="stylesheet">-->
+    <link href="../assets_UserPanel/css/component.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets_UserPanel/css/font-awesome.css">
+    <link rel="stylesheet" href="../assets_UserPanel/css/font-awesome-ie7.css">
 
-    <link rel="stylesheet" href="../assets/css/overwrite.css">
+    <link rel="stylesheet" href="../assets_UserPanel/css/overwrite.css">
 
-    <script src="../assets/js/html5shiv.js"></script>
-    <script src="../assets/js/respond.min.js"></script>
-    <script src="../assets/js/modernizr.custom.js"></script>
+    <script src="../assets_UserPanel/js/html5shiv.js"></script>
+    <script src="../assets_UserPanel/js/respond.min.js"></script>
+    <script src="../assets_UserPanel/js/modernizr.custom.js"></script>
 
 
     <asp:ContentPlaceHolder ID="head" runat="server">
@@ -81,7 +81,7 @@
 <body>
     <form id="form1" runat="server">
         <div class="container page-styling">
-            <div class="header-wrapper" style="background-image: url('../assets/img/bags-collage.jpg');">
+            <div class="header-wrapper" style="background-image: url('../assets_UserPanel/img/bags-collage.jpg');">
                 <div class="site-name">
                     <h1 style="color: darkred; text-shadow: 2px 2px black;">RealOrFake</h1>
                 </div>
@@ -125,13 +125,13 @@
     <!-- Bootstrap core JavaScript
             ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="../assets/js/jquery-1.9.1.js"></script>
-    <script src="../assets/js/bootstrap.js"></script>
-    <script src="../assets/js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
-    <script src="../assets/js/masonry.pkgd.min.js"></script>
-    <script src="../assets/js/imagesloaded.js"></script>
-    <script src="../assets/js/classie.js"></script>
-    <script src="../assets/js/AnimOnScroll.js"></script>
+    <script src="../assets_UserPanel/js/jquery-1.9.1.js"></script>
+    <script src="../assets_UserPanel/js/bootstrap.js"></script>
+    <script src="../assets_UserPanel/js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+    <script src="../assets_UserPanel/js/masonry.pkgd.min.js"></script>
+    <script src="../assets_UserPanel/js/imagesloaded.js"></script>
+    <script src="../assets_UserPanel/js/classie.js"></script>
+    <script src="../assets_UserPanel/js/AnimOnScroll.js"></script>
 
     <script>
         new AnimOnScroll(document.getElementById('grid'), {
