@@ -67,6 +67,7 @@
   <ItemGroup>
     <Content Include="AdminPanel\Default.aspx" />
     <Content Include="AdminPanel\LoginPanel.aspx" />
+    <Content Include="AdminPanel\ViewAdminList.aspx" />
     <Content Include="App_Data\RealOrFakeDB.mdf" />
     <Content Include="App_Data\RealOrFakeDB_log.ldf">
       <DependentUpon>RealOrFakeDB.mdf</DependentUpon>
@@ -166,6 +167,13 @@
     </Compile>
     <Compile Include="AdminPanel\LoginPanel.aspx.designer.cs">
       <DependentUpon>LoginPanel.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminPanel\ViewAdminList.aspx.cs">
+      <DependentUpon>ViewAdminList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminPanel\ViewAdminList.aspx.designer.cs">
+      <DependentUpon>ViewAdminList.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
