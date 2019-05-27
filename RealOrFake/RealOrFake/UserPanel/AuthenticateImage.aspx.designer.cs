@@ -13,6 +13,42 @@ namespace RealOrFake.UserPanel {
     public partial class AuthenticateImage {
         
         /// <summary>
+        /// label_name control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label label_name;
+        
+        /// <summary>
+        /// textbox_name control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox textbox_name;
+        
+        /// <summary>
+        /// label_email control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label label_email;
+        
+        /// <summary>
+        /// textbox_email control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox textbox_email;
+        
+        /// <summary>
         /// FileUpload1 control.
         /// </summary>
         /// <remarks>
