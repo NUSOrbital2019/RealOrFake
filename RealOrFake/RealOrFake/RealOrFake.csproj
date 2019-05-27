@@ -65,6 +65,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AdminPanel\Default.aspx" />
+    <Content Include="AdminPanel\LoginPanel.aspx" />
     <Content Include="App_Data\RealOrFakeDB.mdf" />
     <Content Include="App_Data\RealOrFakeDB_log.ldf">
       <DependentUpon>RealOrFakeDB.mdf</DependentUpon>
@@ -114,6 +116,20 @@
     </Compile>
     <Compile Include="AdminPanel\Admin.Master.designer.cs">
       <DependentUpon>Admin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="AdminPanel\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminPanel\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminPanel\LoginPanel.aspx.cs">
+      <DependentUpon>LoginPanel.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminPanel\LoginPanel.aspx.designer.cs">
+      <DependentUpon>LoginPanel.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
