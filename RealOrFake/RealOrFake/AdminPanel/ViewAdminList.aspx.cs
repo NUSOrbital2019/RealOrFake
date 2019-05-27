@@ -13,5 +13,20 @@ namespace RealOrFake.AdminPanel
 		{
 
 		}
+
+		protected void CreateButton_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
+		{
+
+		}
+
+		protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+		{
+
+		}
 	}
 }
