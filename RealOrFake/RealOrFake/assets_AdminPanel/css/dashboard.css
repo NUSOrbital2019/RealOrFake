@@ -1,0 +1,469 @@
+﻿/* Gridview */
+html {
+    overflow: auto;
+}
+
+.table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {
+    max-width: 200px;
+    overflow: auto;
+}
+
+.card .table tbody td:last-child, .card .table thead th:last-child {
+    padding-right: 15px;
+    display: table-cell !important;
+}
+
+
+#MainContent_gridview_adminDashboard {
+    /*border-bottom: 0px solid white;*/
+    border: 0px solid transparent;
+    border-bottom: 1px solid #ddd !important;
+}
+
+td {
+    text-align: center;
+    -webkit-font-smoothing: antialiased;
+    font-family: "Roboto", "Helvetica Neue", Arial, sans-serif;
+    font-weight: 400;
+}
+
+th {
+    border-bottom-width: 1px;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #9A9A9A;
+    font-weight: 400;
+    padding-bottom: 5px;
+    border-top: none !important;
+    border-bottom: none;
+    text-align: center;
+}
+
+td:nth-child(1) {
+    text-align: left;
+}
+
+td:nth-child(2) {
+    text-align: left !important;
+}
+
+td:nth-child(3) {
+    text-align: left;
+}
+
+td:nth-child(4) {
+    text-align: center;
+}
+
+td:nth-child(5) {
+    text-align: center;
+}
+
+button, html input[type="button"], input[type="reset"], input[type="submit"] {
+    font-size: small;
+}
+
+.table > tbody > tr > td {
+    /*max-width: 150px !important*/
+}
+
+.ThirdColumn {
+    min-width: 175px !important;
+    max-width: 175px !important;
+}
+
+.card .card-body {
+    padding: 15px 15px 10px 35px;
+}
+
+
+
+.cssPager td {
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+.cssPager table {
+    float: right;
+}
+
+.card .table tr:last-child {
+    border-top: 2px solid white;
+    margin-right: 40%;
+    margin-left: 40%;
+    background-color: white;
+}
+
+.card-body table-full-width table-responsive, .card .card-body {
+    max-width: 100% !important;
+}
+
+/* Modal Dialogs */
+#myModal {
+    display: inline-table;
+    padding-right: 23px;
+    /*top: calc(20% - 200px) !important;*/
+}
+
+.modal-content {
+    box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.07);
+}
+
+.modal-header {
+    display: inline-table;
+    width: 100%;
+}
+
+.modal-footer {
+    display: block;
+}
+
+#modal-dialog1 {
+    position: absolute;
+}
+
+#modal-dialog2 {
+    position: unset;
+}
+
+.wrapper {
+    position: relative;
+}
+
+#MainContent_RadioButton1_0, #MainContent_RadioButton1_1, #MainContent_RadioButton1_2, #MainContent_RadioButton1_3 {
+    float: right;
+    position: absolute;
+}
+
+input#MainContent_RadioButton1_0, input#MainContent_RadioButton1_1, input#MainContent_RadioButton1_2, input#MainContent_RadioButton1_3 {
+    position: absolute;
+    float: left;
+}
+
+#MainContent_textbox_otherAnswer {
+    margin-left: 5%;
+    margin-top: -2%;
+    display: inline-block;
+    min-width: 90%;
+}
+
+#SecondaryContent_RadioButton1_0, #SecondaryContent_RadioButton1_1, #SecondaryContent_RadioButton1_2, #SecondaryContent_RadioButton1_3 {
+    float: right;
+    position: absolute;
+}
+
+input#SecondaryContent_RadioButton1_0, input#SecondaryContent_RadioButton1_1, input#SecondaryContent_RadioButton1_2, input#SecondaryContent_RadioButton1_3 {
+    position: absolute;
+    float: left;
+}
+
+#SecondaryContent_textbox_otherAnswer {
+    margin-left: 5%;
+    margin-top: -2%;
+    display: inline-block;
+    min-width: 90%;
+}
+
+
+label {
+    padding-bottom: 2%;
+    display: inline;
+    padding-left: 5%;
+}
+
+
+#myModal {
+    width: 50%;
+}
+
+.modal {
+    position: absolute;
+}
+
+.modal-open {
+    overflow: auto;
+}
+
+.main-panel {
+    overflow: auto;
+    overflow-x: hidden;
+    height: initial;
+    max-height: auto;
+}
+
+.modal .modal-content .modal-body {
+    max-height: 350px !important;
+    overflow: auto;
+}
+
+#SecondaryContent_RadioButton1 td {
+    padding-bottom: 3%;
+}
+
+.loading {
+    font-family: Arial;
+    font-size: 10pt;
+    width: 200px;
+    height: 100px;
+    display: none;
+    position: fixed;
+    z-index: 999;
+}
+
+.loadingModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    opacity: 0.8;
+    filter: alpha(opacity=80);
+    -moz-opacity: 0.8;
+    min-height: 100%;
+    width: 100%;
+}
+
+/* Status Tabs */
+
+*, *:before, *:after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font: 14px/1 'Open Sans', sans-serif;
+    color: #555;
+    background: #eee;
+}
+
+h1 {
+    padding: 50px 0;
+    font-weight: 400;
+    text-align: center;
+}
+
+p {
+    margin: 0 0 20px;
+    line-height: 1.5;
+}
+
+main {
+    min-width: 320px;
+    max-width: 800px;
+    margin: 0 auto;
+    float: left;
+}
+
+.row {
+    /*float: left;*/
+}
+
+section {
+    display: none;
+    padding: 20px 0 0;
+    /*border-top: 1px solid #ddd;*/
+}
+
+main input {
+    display: none;
+}
+
+main label {
+    display: inline-block;
+    margin: 0 0 -1px;
+    padding: 15px 25px;
+    font-weight: 600;
+    text-align: center;
+    color: white;
+    border: 1px solid transparent;
+}
+
+    main label:before {
+        font-family: fontawesome;
+        font-weight: normal;
+        margin-right: 10px;
+    }
+
+    main label[for*='1']:before {
+        content: '\26A0';
+    }
+
+    main label[for*='2']:before {
+        content: '\270D';
+    }
+
+    main label[for*='3']:before {
+        content: '\2713';
+    }
+
+    main label:hover {
+        color: black;
+        cursor: pointer;
+    }
+
+main input:checked + main label {
+    color: #555;
+    border: 1px solid #ddd;
+    border-top: 3px solid white;
+    border-bottom: 1px solid #fff;
+}
+
+#MainContent_div_tab1, #MainContent_div_tab2, #MainContent_div_tab3, #MainContent_div_tab4 {
+    /*border-top: 3px solid orange;*/
+    /*border-bottom: 1px solid #fff;*/
+    box-shadow: 5px 3px 3px black;
+    border-radius: 5px;
+    font-size: medium;
+}
+
+#tab1:checked ~ #content1,
+#tab2:checked ~ #content2,
+#tab3:checked ~ #content3,
+#tab4:checked ~ #content4 {
+    display: block;
+}
+
+@media screen and (max-width: 650px) {
+    label {
+        font-size: 0;
+    }
+
+        label:before {
+            margin: 0;
+            font-size: 18px;
+        }
+}
+
+@media screen and (max-width: 400px) {
+    label {
+        padding: 15px;
+    }
+}
+
+/* Buttons */
+td input[type=button], input[type=reset], input[type=submit] {
+    float: left;
+}
+
+/* Dropdownlist - Intent/Status */
+
+#SecondaryContent_dropdownlist_intentName option {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    float: left;
+    min-width: 160px;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    font-size: 14px;
+    text-align: left;
+    list-style: none;
+    background-color: #fff;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0,0,0,.15);
+    border-radius: 4px;
+    -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+    box-shadow: 0 6px 12px rgba(0,0,0,.175);
+    color: black;
+}
+
+#MainContent_gridview_adminDashboard td:nth-child(7) select {
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #2e6da4;
+    display: inline-block;
+    padding: 3px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+    #MainContent_gridview_adminDashboard td:nth-child(7) select option {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: 1000;
+        /*display: none;*/
+        float: left;
+        min-width: 160px;
+        padding: 5px 0;
+        margin: 2px 0 0;
+        font-size: 14px;
+        text-align: left;
+        list-style: none;
+        background-color: #fff;
+        -webkit-background-clip: padding-box;
+        background-clip: padding-box;
+        border: 1px solid #ccc;
+        border: 1px solid rgba(0,0,0,.15);
+        border-radius: 4px;
+        -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+        box-shadow: 0 6px 12px rgba(0,0,0,.175);
+        color: black;
+    }
+
+#MainContent_gridview_adminDashboard td:nth-child(6) select {
+    color: #fff;
+    background-color: #337ab7;
+    border-color: #2e6da4;
+    display: inline-block;
+    padding: 3px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+    #MainContent_gridview_adminDashboard td:nth-child(6) select option {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: 1000;
+        /*display: none;*/
+        float: left;
+        min-width: 160px;
+        padding: 5px 0;
+        margin: 2px 0 0;
+        font-size: 14px;
+        text-align: left;
+        list-style: none;
+        background-color: #fff;
+        -webkit-background-clip: padding-box;
+        background-clip: padding-box;
+        border: 1px solid #ccc;
+        border: 1px solid rgba(0,0,0,.15);
+        border-radius: 4px;
+        -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+        box-shadow: 0 6px 12px rgba(0,0,0,.175);
+        color: black;
+    }
