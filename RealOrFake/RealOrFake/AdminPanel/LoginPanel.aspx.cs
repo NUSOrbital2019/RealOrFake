@@ -20,33 +20,36 @@ namespace RealOrFake.AdminPanel
             string inputUsername = txtUsername.Text;
             string inputPassword = txtPassword.Text;
 
-            var dbSalt = "PHBheW1lbnRSZXNwb25zZT48cmVzcG9uc2VDb2RlPjAwMDA8L3Jlc3BvbnNlQ29kZT48cmVzcG9uc2VDb2RlVGV4dD4wLVN1Y2Nlc3NmdWw8L3Jlc3BvbnNlQ29kZVRleHQ+PHJlc3BvbnNlU3VtbWFyeT5HUkVFTjwvcmVzcG9uc2VTdW1tYXJ5PjxwYXltZW50RXZlbnRJZGVudGlmaWVyPlRYTiAzNjM5PC9wYXltZW50RXZlbnRJZGVudGlmaWVyPjxMaXN0Pjxjb21wb25lbnRJRD5UWE4gMzYzOTwvY29tcG9uZW50SUQ+PGNsaWVudElEPkdPVERJU0UwNjwvY2xpZW50SUQ+PGJhbmtBdXRoQ29kZT5UOjEyMzQ8L2JhbmtBdXRoQ29kZT48YnV5bmV0VHhuSUQ+Mzc1PC9idXluZXRUeG5JRD48L0xpc3Q+PHBheW1lbnRJbnN0cnVtZW50UmVmPjwvcGF5bWVudEluc3RydW1lbnRSZWY+PG1hc2tlZENhcmROdW1iZXI+KioqKioqKioqKioqOTY4NjwvbWFza2VkQ2FyZE51bWJlcj48Y2FyZFR5cGU+TUFTVEVSQ0FSRDwvY2FyZFR5cGU+PGV4cGlyeURhdGU+MDMvMjAxNzwvZXhwaXJ5RGF0ZT48Y3VzdG9tRGF0YT4mbHQ7IVtDREFUQVsmbHQ7P3htbCB2ZXJzaW9uPSIxLjAiIGVuY29kaW5nPSJVVEYtOCI_Jmd0Ow0KJmx0O1RoaXN0bGVDdXN0b21EYXRhIHhtbG5zOnhzZD0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiJmd0Ow0KICAmbHQ7T3JkZXJJZCZndDtCVFBQMzYzOSZsdDsvT3JkZXJJZCZndDsNCiAgJmx0O0Ftb3VudCZndDsxMjAmbHQ7L0Ftb3VudCZndDsNCiZsdDsvVGhpc3RsZUN1c3RvbURhdGEmZ3Q7XV0mZ3Q7PC9jdXN0b21EYXRhPjwvcGF5bWVudFJlc3BvbnNlPg";
-            dbSalt = ValidateBase64EncodedString(dbSalt);
+            //var dbSalt = "PHBheW1lbnRSZXNwb25zZT48cmVzcG9uc2VDb2RlPjAwMDA8L3Jlc3BvbnNlQ29kZT48cmVzcG9uc2VDb2RlVGV4dD4wLVN1Y2Nlc3NmdWw8L3Jlc3BvbnNlQ29kZVRleHQ+PHJlc3BvbnNlU3VtbWFyeT5HUkVFTjwvcmVzcG9uc2VTdW1tYXJ5PjxwYXltZW50RXZlbnRJZGVudGlmaWVyPlRYTiAzNjM5PC9wYXltZW50RXZlbnRJZGVudGlmaWVyPjxMaXN0Pjxjb21wb25lbnRJRD5UWE4gMzYzOTwvY29tcG9uZW50SUQ+PGNsaWVudElEPkdPVERJU0UwNjwvY2xpZW50SUQ+PGJhbmtBdXRoQ29kZT5UOjEyMzQ8L2JhbmtBdXRoQ29kZT48YnV5bmV0VHhuSUQ+Mzc1PC9idXluZXRUeG5JRD48L0xpc3Q+PHBheW1lbnRJbnN0cnVtZW50UmVmPjwvcGF5bWVudEluc3RydW1lbnRSZWY+PG1hc2tlZENhcmROdW1iZXI+KioqKioqKioqKioqOTY4NjwvbWFza2VkQ2FyZE51bWJlcj48Y2FyZFR5cGU+TUFTVEVSQ0FSRDwvY2FyZFR5cGU+PGV4cGlyeURhdGU+MDMvMjAxNzwvZXhwaXJ5RGF0ZT48Y3VzdG9tRGF0YT4mbHQ7IVtDREFUQVsmbHQ7P3htbCB2ZXJzaW9uPSIxLjAiIGVuY29kaW5nPSJVVEYtOCI_Jmd0Ow0KJmx0O1RoaXN0bGVDdXN0b21EYXRhIHhtbG5zOnhzZD0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiJmd0Ow0KICAmbHQ7T3JkZXJJZCZndDtCVFBQMzYzOSZsdDsvT3JkZXJJZCZndDsNCiAgJmx0O0Ftb3VudCZndDsxMjAmbHQ7L0Ftb3VudCZndDsNCiZsdDsvVGhpc3RsZUN1c3RvbURhdGEmZ3Q7XV0mZ3Q7PC9jdXN0b21EYXRhPjwvcGF5bWVudFJlc3BvbnNlPg";
+            //dbSalt = ValidateBase64EncodedString(dbSalt);
 
             string dbUsername = "";
-            string dbPassword = "";
+            string dbPasswordHash = "";
+            string dbSalt = "";
 
             SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["FileDatabaseConnectionString1"].ConnectionString);
             connection.Open();
-            SqlCommand myCommand = new SqlCommand("SELECT AdminUsername, AdminPassword FROM Admin WHERE AdminUsername = @AdminUsername", connection);
+            SqlCommand myCommand = new SqlCommand("SELECT AdminUsername, AdminPassword, Salt FROM Admin WHERE AdminUsername = @AdminUsername", connection);
             myCommand.Parameters.AddWithValue("@AdminUsername", inputUsername);
 
             SqlDataReader myReader = myCommand.ExecuteReader();
             while (myReader.Read())
             {
                 dbUsername = (myReader["AdminUsername"].ToString());
-                dbPassword = (myReader["AdminPassword"].ToString());
+                dbPasswordHash = (myReader["AdminPassword"].ToString());
+                dbSalt = (myReader["Salt"].ToString());
             }
             connection.Close();
 
-            string dbPasswordHash = ComputeHash(dbPassword, new SHA512CryptoServiceProvider(), Convert.FromBase64String(dbSalt));
-            string passwordHash = ComputeHash(inputPassword, new SHA512CryptoServiceProvider(), Convert.FromBase64String(dbSalt));
+            dbSalt = ValidateBase64EncodedString(dbSalt);
+
+            string inputPasswordHash = ComputeHash(inputPassword, new SHA512CryptoServiceProvider(), Convert.FromBase64String(dbSalt));
 
             if (IsValid)
             {
                 if (dbUsername.Equals(inputUsername.Trim()))
                 {
-                    if (dbPasswordHash.Equals(passwordHash))
+                    if (dbPasswordHash.Equals(inputPasswordHash))
                     {
                         FormsAuthenticationTicket authTicket = new FormsAuthenticationTicket(1, txtUsername.Text, DateTime.Now, DateTime.Now.AddMinutes(10), false, txtUsername.Text);
                         String encryptedTicket = FormsAuthentication.Encrypt(authTicket);

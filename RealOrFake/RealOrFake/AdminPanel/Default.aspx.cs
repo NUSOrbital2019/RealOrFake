@@ -10,12 +10,11 @@ namespace RealOrFake.AdminPanel
             HtmlControl control = Master.FindControl("navUserSubmission") as HtmlControl;
             control.Attributes.Add("class", "nav-item active");
 
-            if (Context.User.Identity.Name == "admin")
+            if (Context.User.Identity.Name != "master")
             {
                 HtmlControl control2 = Master.FindControl("navAdminList") as HtmlControl;
                 control2.Attributes.CssStyle.Add("display", "none");
             }
-
         }
     }
 }
