@@ -18,7 +18,7 @@ namespace RealOrFake.AdminPanel
 
 		protected void CreateButton_Click(object sender, EventArgs e)
 		{
-
+            Response.Redirect("CreateNewAdmin.aspx");
 		}
 
 		protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
