@@ -48,6 +48,28 @@ namespace RealOrFake.AdminPanel
             updateSubmissionStatusCommand.ExecuteNonQuery();
             connection.Close();
         }
+        
 
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "DeleteSubmission")
+            {
+                string imagePath = e.CommandArgument.ToString();
+                deleteSubmission(imagePath);
+            }
+        }
+
+        private void deleteSubmission(String imagePath)
+        {
+            SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["FileDatabaseConnectionString1"].ConnectionString);
+
+            connection.Open();
+
+            SqlCommand updateSubmissionStatusCommand = new SqlCommand("DELETE FROM Customer WHERE imagePath = @imagePath", connection);
+            updateSubmissionStatusCommand.Parameters.AddWithValue("@imagePath", imagePath);
+
+            updateSubmissionStatusCommand.ExecuteNonQuery();
+            connection.Close();
+        }
     }
 }

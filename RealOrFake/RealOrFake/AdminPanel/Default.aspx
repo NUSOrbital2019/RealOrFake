@@ -3,7 +3,16 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
+    <style>
+        td {
+            max-width: 300px;
+            overflow: auto;
+        }
+        table {
+            box-sizing: inherit;
+            max-width: 100%;
+        }
+    </style>
     <div class="card-header">
         <h4 class="card-title">User's Submissions</h4>
     </div>
@@ -20,7 +29,7 @@
                 HeaderStyle-HorizontalAlign="Center" CellPadding="15" Font-Names="Helvetica"
                 HeaderStyle-ForeColor="White" HeaderStyle-Wrap="true" RowStyle-BorderColor="white"
                 RowStyle-HorizontalAlign="Center" PageSize="5" AllowPaging="True" DataSourceID="SqlDataSource1" Width="100%" AutoGenerateColumns="false"
-                EmptyDataText="There is currently no pending submissions.">
+                EmptyDataText="There is currently no pending submissions." OnRowCommand="GridView1_RowCommand">
                 <%-- OnPageIndexChanging="GridView2_PageIndexChanging" --%>
 
                 <%--<PagerStyle CssClass="pagerStyle" />--%>
@@ -32,7 +41,7 @@
                     <asp:TemplateField HeaderText="Update Submission Status">
                         <ItemTemplate>
                             <asp:DropDownList ID="dropdown_status" runat="server" AutoPostBack="true" OnSelectedIndexChanged="dropdown_status_SelectedIndexChanged"
-                                EnableViewState="true" ViewStateMode="Enabled">
+                                EnableViewState="true" ViewStateMode="Enabled" CssClass="btn btn-primary">
                                 <asp:ListItem Text="Pending" Value="1"></asp:ListItem>
                                 <asp:ListItem Text="Approve" Value="2"></asp:ListItem>
                                 <asp:ListItem Text="Rejected" Value="3"></asp:ListItem>
@@ -41,6 +50,13 @@
                         </ItemTemplate>
                     </asp:TemplateField>
 
+                    <asp:TemplateField HeaderText="Delete Submisson">
+                        <ItemTemplate>
+                            <asp:Button Text="Delete Submission" ID="button_deleteSubmission" runat="server"
+                                CssClass="btn btn-warning" CommandName="DeleteSubmission"
+                                UseSubmitBehavior="False" CommandArgument='<%# Eval("imagePath") %>' />
+                        </ItemTemplate>
+                    </asp:TemplateField>
                 </Columns>
 
             </asp:GridView>
