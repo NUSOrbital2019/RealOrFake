@@ -46,13 +46,13 @@ namespace RealOrFake.UserPanel
 
                         //Insert to database
                         connection.Open();
-                        SqlCommand insertCommand = new SqlCommand("INSERT INTO [Customer] (Email, Name, ImagePath, SubmissionStatus)" +
-                            " VALUES (@email, @name, @imagePath, @submissionStatus)");
+                        SqlCommand insertCommand = new SqlCommand("INSERT INTO [Customer] (Email, Name, ImagePath)" +
+                            " VALUES (@email, @name, @imagePath)");
                         //insertCommand.Parameters.AddWithValue("@submissionId", submissionId);
                         insertCommand.Parameters.AddWithValue("@email", textbox_email.Text);
                         insertCommand.Parameters.AddWithValue("@name", textbox_name.Text);
                         insertCommand.Parameters.AddWithValue("@imagePath", imagePath);
-                        insertCommand.Parameters.AddWithValue("@submissionStatus", "Pending");
+                        //insertCommand.Parameters.AddWithValue("@submissionStatus", "Pending");
                         insertCommand.Connection = connection;
                         insertCommand.ExecuteNonQuery();
                         connection.Close();

@@ -11,9 +11,41 @@
     <div class="card-body" style="padding: 1.25rem;">
 
         <div class="row">
-            CODES
-                            <br />
-            CODES
+
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ConnectionStrings:FileDatabaseConnectionString1 %>"
+                SelectCommand="SELECT [Email], [Name], [ImagePath] FROM [Customer]
+        WHERE (SubmissionStatus = 'Pending');"></asp:SqlDataSource>
+
+            <asp:GridView ID="GridView1" runat="server" BorderColor="#F0F0F0" HeaderStyle-BackColor="#146882" RowStyle-BackColor="#f3f3f3" RowStyle-Font-Size="Small"
+                HeaderStyle-HorizontalAlign="Center" CellPadding="15" Font-Names="Helvetica"
+                HeaderStyle-ForeColor="White" HeaderStyle-Wrap="true" RowStyle-BorderColor="white"
+                RowStyle-HorizontalAlign="Center" PageSize="5" AllowPaging="True" DataSourceID="SqlDataSource1" Width="100%" AutoGenerateColumns="false"
+                EmptyDataText="There is currently no pending submissions.">
+                <%-- OnPageIndexChanging="GridView2_PageIndexChanging" --%>
+
+                <%--<PagerStyle CssClass="pagerStyle" />--%>
+                <Columns>
+                    <asp:BoundField DataField="Name" HeaderText="Name" />
+                    <asp:BoundField DataField="Email" HeaderText="Email" />
+                    <asp:BoundField DataField="ImagePath" HeaderText="Image" />
+
+                    <asp:TemplateField HeaderText="Update Submission Status">
+                        <ItemTemplate>
+                            <asp:DropDownList ID="dropdown_status" runat="server" AutoPostBack="true" OnSelectedIndexChanged="dropdown_status_SelectedIndexChanged"
+                                EnableViewState="true" ViewStateMode="Enabled">
+                                <asp:ListItem Text="Pending" Value="1"></asp:ListItem>
+                                <asp:ListItem Text="Approve" Value="2"></asp:ListItem>
+                                <asp:ListItem Text="Rejected" Value="3"></asp:ListItem>
+                                <%--<asp:ListItem Text="Irrelevant" Value="4"></asp:ListItem>--%>
+                            </asp:DropDownList>
+                        </ItemTemplate>
+                    </asp:TemplateField>
+
+                </Columns>
+
+            </asp:GridView>
+
+
         </div>
     </div>
 
