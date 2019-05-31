@@ -5,7 +5,7 @@
 	<p>
 		Admin Registration
 	</p>
-	IUser Name:
+	User Name:
 	<asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
 	<br />
 	<br />
@@ -15,4 +15,6 @@
 	<br />
 	<br />
 	<asp:Button ID="SubmitButton" runat="server" OnClick="SubmitButton_Click" Text="Submit" />
+&nbsp;&nbsp;&nbsp;&nbsp;
+    <asp:Button ID="resetBtn" runat="server" Text="Reset" />
 </asp:Content>
