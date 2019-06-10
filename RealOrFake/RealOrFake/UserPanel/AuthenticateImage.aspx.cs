@@ -27,32 +27,26 @@ namespace RealOrFake.UserPanel
                 {
                     using (MemoryStream memory = new MemoryStream())
                     {
-                        int submissionId;
+                        //Image path shorten for Admin Panel retrieval and displaying
+                        int submissionId = DateTime.Now.Millisecond;
+
+                        string imagePathShortened = "/Resources/ImagesForAuthentication/" + submissionId + "-" + textbox_email.Text + ".jpg";
+
+                        //Upload image into server
+                        string imagePath = HttpContext.Current.Server.MapPath(@"~/Resources/ImagesForAuthentication/" + submissionId + "-" + textbox_email.Text + ".jpg");
+                        FileUpload1.SaveAs(imagePath);
 
                         SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["FileDatabaseConnectionString1"].ConnectionString);
 
-                        //Retrieve the next running submissionId from database
-                        connection.Open();
-                        SqlCommand selectCommand = new SqlCommand("SELECT count(submissionId) FROM Customer ", connection);
-                        submissionId = (int)selectCommand.ExecuteScalar();
-                        connection.Close();
-
-                        if (submissionId == -1)
-                            submissionId = 0;
-
-                        //Upload image into server
-                        string imagePath = HttpContext.Current.Server.MapPath(@"~/Resources/ImagesForAuthentication/" + (submissionId + 1) + "-" + textbox_email.Text + ".jpg");
-                        FileUpload1.SaveAs(imagePath);
-
                         //Insert to database
                         connection.Open();
-                        SqlCommand insertCommand = new SqlCommand("INSERT INTO [Customer] (Email, Name, ImagePath)" +
-                            " VALUES (@email, @name, @imagePath)");
-                        //insertCommand.Parameters.AddWithValue("@submissionId", submissionId);
+                        SqlCommand insertCommand = new SqlCommand("INSERT INTO [Customer] (SubmissionId, Email, Name, ImagePath, SubmissionDate)" +
+                            " VALUES (@submissionId, @email, @name, @imagePath, @submissionDate)");
+                        insertCommand.Parameters.AddWithValue("@submissionId", submissionId);
                         insertCommand.Parameters.AddWithValue("@email", textbox_email.Text);
                         insertCommand.Parameters.AddWithValue("@name", textbox_name.Text);
-                        insertCommand.Parameters.AddWithValue("@imagePath", imagePath);
-                        //insertCommand.Parameters.AddWithValue("@submissionStatus", "Pending");
+                        insertCommand.Parameters.AddWithValue("@imagePath", imagePathShortened);
+                        insertCommand.Parameters.AddWithValue("@submissionDate", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
                         insertCommand.Connection = connection;
                         insertCommand.ExecuteNonQuery();
                         connection.Close();
