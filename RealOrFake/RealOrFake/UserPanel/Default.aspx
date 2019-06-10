@@ -7,19 +7,19 @@
         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="item active">
-                    <img src="../assets/img/news1.jpg" alt="" style="min-width: 100% !important; max-width: none; max-height: 600px;">
+                    <img src="../assets_UserPanel/img/news1.jpg" alt="" style="min-width: 100% !important; max-width: none; max-height: 600px;">
                     <div class="carousel-caption">
                         <h1>We help to identify whether a bag is real or fake.</h1>
                     </div>
                 </div>
                 <div class="item">
-                    <img src="../assets/img/news2.jpg" alt="" style="min-width: 100% !important; max-width: none; max-height: 600px;">
+                    <img src="../assets_UserPanel/img/news2.jpg" alt="" style="min-width: 100% !important; max-width: none; max-height: 600px;">
                     <div class="carousel-caption">
                         <h1>We help to prevent you from being a victim of scams.</h1>
                     </div>
                 </div>
                 <div class="item">
-                    <img src="../assets/img/news3.jpg" alt="" style="min-width: 100% !important; max-width: none; max-height: 600px;">
+                    <img src="../assets_UserPanel/img/news3.jpg" alt="" style="min-width: 100% !important; max-width: none; max-height: 600px;">
                     <div class="carousel-caption">
                         <h1>We help you to feel at ease shopping online.</h1>
                     </div>

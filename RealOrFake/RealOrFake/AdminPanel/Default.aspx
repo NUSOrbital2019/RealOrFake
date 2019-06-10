@@ -34,7 +34,7 @@
                 <%-- OnPageIndexChanging="GridView1_PageIndexChanging" --%>
                 <%--<PagerStyle CssClass="pagerStyle" />--%>
                 <Columns>
-                    <asp:BoundField DataField="SubmissionDate" HeaderText="Date of Submission" />
+                    <asp:BoundField DataField="SubmissionDate" HeaderText="Submission Date" />
                     <asp:BoundField DataField="SubmissionId" HeaderText="Submission Id" />
                     <asp:BoundField DataField="Name" HeaderText="Name" />
                     <asp:BoundField DataField="Email" HeaderText="Email" />
@@ -50,7 +50,7 @@
                     <asp:TemplateField HeaderText="Submission Status">
                         <ItemTemplate>
                             <asp:DropDownList ID="dropdown_status" runat="server" AutoPostBack="true" OnSelectedIndexChanged="dropdown_status_SelectedIndexChanged"
-                                EnableViewState="true" ViewStateMode="Enabled" CssClass="btn btn-primary" Width="120">
+                                EnableViewState="true" ViewStateMode="Enabled" CssClass="btn btn-primary" Width="110" Font-Size="Small">
                                 <asp:ListItem Text="Pending" Value="1"></asp:ListItem>
                                 <asp:ListItem Text="Approved" Value="2"></asp:ListItem>
                                 <asp:ListItem Text="Rejected" Value="3"></asp:ListItem>
@@ -63,7 +63,7 @@
                         <ItemTemplate>
                             <asp:Button Text="Delete Submission" ID="button_deleteSubmission" runat="server"
                                 CssClass="btn btn-warning" CommandName="DeleteSubmission"
-                                UseSubmitBehavior="False" CommandArgument='<%# Eval("imagePath") %>' />
+                                UseSubmitBehavior="False" CommandArgument='<%# Eval("imagePath") %>' Font-Size="Small" />
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>
