@@ -8,6 +8,7 @@
             max-width: 300px;
             overflow: auto;
         }
+
         table {
             box-sizing: inherit;
             max-width: 100%;
@@ -22,7 +23,7 @@
         <div class="row">
 
             <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ConnectionStrings:FileDatabaseConnectionString1 %>"
-                SelectCommand="SELECT [Email], [Name], [ImagePath] FROM [Customer]
+                SelectCommand="SELECT [SubmissionId], [Email], [Name], [ImagePath] FROM [Customer]
         WHERE (SubmissionStatus = 'Pending');"></asp:SqlDataSource>
 
             <asp:GridView ID="GridView1" runat="server" BorderColor="#F0F0F0" HeaderStyle-BackColor="#146882" RowStyle-BackColor="#f3f3f3" RowStyle-Font-Size="Small"
@@ -34,9 +35,16 @@
 
                 <%--<PagerStyle CssClass="pagerStyle" />--%>
                 <Columns>
+                    <asp:BoundField DataField="SubmissionId" HeaderText="Submission Id" />
                     <asp:BoundField DataField="Name" HeaderText="Name" />
                     <asp:BoundField DataField="Email" HeaderText="Email" />
-                    <asp:BoundField DataField="ImagePath" HeaderText="Image" />
+                    <asp:TemplateField HeaderText="ImagePath">
+                        <ItemTemplate>
+                            <asp:ImageButton ID="ImageBtn_ImagePath" runat="server" Width="180" Height="180"
+                                ImageUrl='<%# "~/Resources/ImagesForAuthentication/" + Eval("SubmissionId") + "-" + Eval("Email") + ".jpg" %>'
+                                CommandName="SelectImage" CommandArgument='<%# "/Resources/ImagesForAuthentication/" + Eval("SubmissionId") + "-" + Eval("Email") + ".jpg" %>' />
+                        </ItemTemplate>
+                    </asp:TemplateField>
 
                     <asp:TemplateField HeaderText="Update Submission Status">
                         <ItemTemplate>

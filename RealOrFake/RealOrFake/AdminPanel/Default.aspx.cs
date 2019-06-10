@@ -19,6 +19,7 @@ namespace RealOrFake.AdminPanel
                 HtmlControl control2 = Master.FindControl("navAdminList") as HtmlControl;
                 control2.Attributes.CssStyle.Add("display", "none");
             }
+
         }
 
         protected void dropdown_status_SelectedIndexChanged(object sender, EventArgs e)
@@ -48,7 +49,7 @@ namespace RealOrFake.AdminPanel
             updateSubmissionStatusCommand.ExecuteNonQuery();
             connection.Close();
         }
-        
+
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
@@ -56,6 +57,11 @@ namespace RealOrFake.AdminPanel
             {
                 string imagePath = e.CommandArgument.ToString();
                 deleteSubmission(imagePath);
+            }
+            else if (e.CommandName == "SelectImage")
+            {
+                string imagePath = e.CommandArgument.ToString();
+                ScriptManager.RegisterStartupScript(Page, Page.GetType(), "Open", "window.open('" + imagePath + "');", true);
             }
         }
 
