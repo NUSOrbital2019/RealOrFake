@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.IO;
 using System.Net;
 using System.Net.Mail;
 using System.Net.Mime;
+using System.Web;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
@@ -32,10 +34,10 @@ namespace RealOrFake.AdminPanel
             DropDownList ddl_status = (DropDownList)gvr.FindControl("dropdown_status");
             submissionStatus = ddl_status.SelectedItem.Text;
 
-            String submissionId = gvr.Cells[0].Text;
-            String name = gvr.Cells[1].Text;
-            String email = gvr.Cells[2].Text;
-            
+            String submissionId = gvr.Cells[1].Text;
+            String name = gvr.Cells[2].Text;
+            String email = gvr.Cells[3].Text;
+
             var imgBtn = (ImageButton)gvr.FindControl("ImageBtn_ImagePath");
             String imagePath = imgBtn.CommandArgument;
 
@@ -94,16 +96,27 @@ namespace RealOrFake.AdminPanel
             using (MailMessage mm = new MailMessage("realorfakegoodsauthenticator@gmail.com", email))
             {
                 mm.Subject = "Submission #" + id + " for Photo Authentication Status Updated";
-                
+
                 string body = "Hello " + name + ",";
                 body += "<br /><br />Thank you for using our service.";
-                body += "<br /><br />We have verified your request on " + "<a href=''+imagePath>this product</a>" + " with the submission ID " + id + ".";
-                body += "<br /><br />Based on our evaluation, we have came to a conclusion that your item is " + submissionStatus + ".";
+                body += "<br /><br />We have verified your request on this attached product with the submission ID " + id + ".";
+                body += "<br /><br />Based on our evaluation, we have came to a conclusion that your item is <b>" + submissionStatus + "</b>.";
                 body += "<br /><br />Please take note that we are not liable for any losses or hold responsibilities with our evaluation.";
                 body += "<br /><br />Best regards,";
                 body += "<br />RealOrFake";
                 mm.Body = body;
                 mm.IsBodyHtml = true;
+
+                //Add photo attachment
+                string attachmentPath = HttpContext.Current.Server.MapPath(@"~/Resources/ImagesForAuthentication/" + id + "-" + email + ".jpg");
+                Attachment inline = new Attachment(attachmentPath);
+                inline.ContentDisposition.Inline = true;
+                inline.ContentDisposition.DispositionType = DispositionTypeNames.Inline;
+                //inline.ContentId = contentID;
+                inline.ContentType.MediaType = "image/jpg";
+                inline.ContentType.Name = Path.GetFileName(attachmentPath);
+                mm.Attachments.Add(inline);
+
                 SmtpClient smtp = new SmtpClient();
                 smtp.Host = "smtp.gmail.com";
                 smtp.EnableSsl = true;
