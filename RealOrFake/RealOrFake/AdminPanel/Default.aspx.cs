@@ -25,6 +25,11 @@ namespace RealOrFake.AdminPanel
                 control2.Attributes.CssStyle.Add("display", "none");
             }
 
+            if (!IsPostBack)
+            {
+                Session["currentStatusTab"] = "Pending";
+            }
+
         }
 
         protected void dropdown_status_SelectedIndexChanged(object sender, EventArgs e)
@@ -126,8 +131,99 @@ namespace RealOrFake.AdminPanel
                 smtp.Port = 587;
                 smtp.Send(mm);
             }
-
         }
 
+        protected void label_tab1_pending_Click(object sender, EventArgs e)
+        {
+            Session["currentStatusTab"] = "Pending";
+
+            BindingGridView();
+
+            div_tab1.Style.Add("z-index", "1050");
+            div_tab1.Style.Add("opacity", "1");
+            div_tab1.Style.Add("font-weight", "bold");
+
+            div_tab2.Style.Add("border", "none");
+            div_tab2.Style.Add("border-top", "none");
+            div_tab2.Style.Add("z-index", "0");
+            div_tab2.Style.Add("opacity", "0.3");
+            div_tab2.Style.Add("font-weight", "normal");
+            div_tab3.Style.Add("border", "none");
+            div_tab3.Style.Add("border-top", "none");
+            div_tab3.Style.Add("z-index", "0");
+            div_tab3.Style.Add("opacity", "0.3");
+            div_tab3.Style.Add("font-weight", "normal");
+        }
+
+        protected void label_tab2_approved_Click(object sender, EventArgs e)
+        {
+            Session["currentStatusTab"] = "Approved";
+
+            BindingGridView();
+
+            div_tab2.Style.Add("z-index", "1050");
+            div_tab2.Style.Add("opacity", "1");
+            div_tab2.Style.Add("font-weight", "bold");
+
+            div_tab1.Style.Add("border", "none");
+            div_tab1.Style.Add("border-top", "none");
+            div_tab1.Style.Add("z-index", "0");
+            div_tab1.Style.Add("opacity", "0.3");
+            div_tab1.Style.Add("font-weight", "normal");
+            div_tab3.Style.Add("border", "none");
+            div_tab3.Style.Add("border-top", "none");
+            div_tab3.Style.Add("z-index", "0");
+            div_tab3.Style.Add("opacity", "0.3");
+            div_tab3.Style.Add("font-weight", "normal");
+        }
+
+        protected void label_tab3_rejected_Click(object sender, EventArgs e)
+        {
+            Session["currentStatusTab"] = "Rejected";
+
+            BindingGridView();
+
+            div_tab3.Style.Add("z-index", "1050");
+            div_tab3.Style.Add("opacity", "1");
+            div_tab3.Style.Add("font-weight", "bold");
+
+            div_tab1.Style.Add("border", "none");
+            div_tab1.Style.Add("border-top", "none");
+            div_tab1.Style.Add("z-index", "0");
+            div_tab1.Style.Add("opacity", "0.3");
+            div_tab2.Style.Add("font-weight", "normal");
+            div_tab2.Style.Add("border", "none");
+            div_tab2.Style.Add("border-top", "none");
+            div_tab2.Style.Add("z-index", "0");
+            div_tab2.Style.Add("opacity", "0.3");
+            div_tab2.Style.Add("font-weight", "normal");
+        }
+
+        private void BindingGridView()
+        {
+            GridView1.EmptyDataText = "There is currently no " + Session["currentStatusTab"].ToString() + " submissions.";
+            SqlDataSource1.SelectCommand = "SELECT [SubmissionId], [Email], [Name], [ImagePath], [SubmissionDate] FROM [Customer] WHERE(SubmissionStatus = '" + Session["currentStatusTab"].ToString() + "'); ";
+            GridView1.DataBind();
+        }
+
+        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                DropDownList ddl_status = (DropDownList)e.Row.FindControl("dropdown_status");
+                if (Session["currentStatusTab"].ToString() == "Pending")
+                {
+                    ddl_status.SelectedIndex = ddl_status.Items.IndexOf(ddl_status.Items.FindByText("Pending"));
+                }
+                else if (Session["currentStatusTab"].ToString() == "Approved")
+                {
+                    ddl_status.SelectedIndex = ddl_status.Items.IndexOf(ddl_status.Items.FindByText("Approved"));
+                }
+                else if (Session["currentStatusTab"].ToString() == "Rejected")
+                {
+                    ddl_status.SelectedIndex = ddl_status.Items.IndexOf(ddl_status.Items.FindByText("Rejected"));
+                }
+            }
+        }
     }
 }
