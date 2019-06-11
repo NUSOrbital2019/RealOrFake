@@ -51,6 +51,8 @@ namespace RealOrFake.AdminPanel
                 {
                     if (dbPasswordHash.Equals(inputPasswordHash))
                     {
+                        //Session["AdminUsername"] = dbUsername;
+
                         FormsAuthenticationTicket authTicket = new FormsAuthenticationTicket(1, txtUsername.Text, DateTime.Now, DateTime.Now.AddMinutes(10), false, txtUsername.Text);
                         String encryptedTicket = FormsAuthentication.Encrypt(authTicket);
                         HttpCookie authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
