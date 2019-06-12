@@ -118,12 +118,12 @@
                                 <p>User's Submissions</p>
                             </a>
                         </li>
-                        <li id="navUserProfile" runat="server">
+                       <%-- <li id="navUserProfile" runat="server">
                             <a class="nav-link" href="ViewUserProfile.aspx">
                                 <i class="nc-icon nc-circle-09"></i>
                                 <p>Admin User Profile</p>
                             </a>
-                        </li>
+                        </li>--%>
                         <li id="navAdminList" runat="server">
                             <a class="nav-link" href="ViewAdminList.aspx">
                                 <i class="nc-icon nc-settings-90"></i>
