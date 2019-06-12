@@ -268,14 +268,15 @@ namespace RealOrFake.AdminPanel
                     if (dbPasswordHash.Equals(inputPasswordHash))
                     {
                         Page.ClientScript.RegisterStartupScript(GetType(), "alert", "$('#myModal').modal('hide')", true);
+                        errormsgPasswordAuthenticate.Visible = false;
                     }
-
+                    else
+                    {
+                        Page.ClientScript.RegisterStartupScript(GetType(), "alert", "$('#myModal').modal('show')", true);
+                        errormsgPasswordAuthenticate.Visible = true;
+                    }
                 }
-                else
-                {
-                    Page.ClientScript.RegisterStartupScript(GetType(), "alert", "$('#myModal').modal('show')", true);
-                    errormsgPasswordAuthenticate.Visible = true;
-                }
+                
 
                 //}
             }

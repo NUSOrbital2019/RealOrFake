@@ -19,6 +19,82 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
     <link href="../assets_AdminPanel/css/bootstrap.min.css" rel="stylesheet" />
     <link href="../assets_AdminPanel/css/light-bootstrap-dashboard.css?v=2.0.1" rel="stylesheet" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+
+    <% if (Session[@"AdminUsername"] != null)
+        {%>
+    <script>
+        $(document).ready(function () {
+            //var time = 5 * 1000; //testing purpose: 5seconds
+            var time = 30 * 1000 * 60; //session timeout 30 min
+            var timeout;
+            var isLogout = false;
+            var lastMoveTime = Date.now();
+
+            timeout = setTimeout(function () {
+                isLogout = true;
+                $('#myModal').modal('show');
+            }, time);
+
+            $(document).mousemove(function () {
+                if (!isLogout) {
+                    clearTimeout(timeout);
+                    timeout = setTimeout(function () {
+                        $("#myModal").modal('show');
+                        isLogout = true;
+                        lastMoveTime = Date.now();
+                        hasWarn = false;
+                    }, time);
+                }
+
+                startTimeout();
+            });
+        });
+
+        function startTimeout() {
+            function getIdleTime() {
+                return Date.now() - lastMoveTime;
+            }
+
+            function hasReachTimeOut() {
+                return getIdleTime() > timeout;
+            }
+
+            //function hasReachWarning() {
+            //    return getIdleTime() > warningTime;
+            //}
+
+            function checkTimeout() {
+
+                if (hasReachTimeOut()) {
+                    $('#myModal').modal('show');
+
+                    //Prevent user from refreshing page by pressing F5
+                    document.onkeydown = function () {
+                        switch (event.keyCode) {
+                            case 116: //F5 button
+                                event.returnValue = false;
+                                event.keyCode = 0;
+                                return false;
+                        }
+                    }
+
+                    //Prevent user from pressing back button
+                    DisableBackButton();
+                    window.onload = DisableBackButton;
+                    window.onpageshow = function (evt) { if (evt.persisted) DisableBackButton() }
+                    window.onunload = function () { void (0) }
+                }
+
+            }
+
+            setInterval(checkTimeout, 1000);
+        }
+    </script>
+    <% } %>
+
     <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
 </head>
 
@@ -118,7 +194,7 @@
                                 <p>User's Submissions</p>
                             </a>
                         </li>
-                       <%-- <li id="navUserProfile" runat="server">
+                        <%-- <li id="navUserProfile" runat="server">
                             <a class="nav-link" href="ViewUserProfile.aspx">
                                 <i class="nc-icon nc-circle-09"></i>
                                 <p>Admin User Profile</p>
@@ -148,7 +224,7 @@
                             <ul class="navbar-nav ml-auto">
                                 <li class="nav-item" style="float: right;">
                                     <a class="nav-link" href="AdminUserProfile.aspx">
-                                        <span class="no-icon">Hello, <%: Context.User.Identity.Name %> </span>
+                                        <span class="no-icon">Hello, <b><%: Context.User.Identity.Name %></b> </span>
                                     </a>
                                 </li>
                                 <li class="nav-item" style="float: right;">

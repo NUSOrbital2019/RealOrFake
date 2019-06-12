@@ -21,6 +21,7 @@
             max-width: 800px;
             margin: 0 auto;
             float: left;
+            margin-left: -1%;
         }
 
             main input {
@@ -84,122 +85,30 @@
 
         .card label {
             color: white;
-            font-size: medium
+            font-size: medium;
+            font-weight: bold;
         }
     </style>
 
-
-<% if (Session[@"AdminUsername"] != null)
-        {%>
-    <script>
-
-        var timeout = 5 * 1000;    //60 * 1000 -> 60seconds.
-        var warningTime = 10 * 1000;
-        var warningDuration = timeout - warningTime;
-
-        var hasWarn = false;
-        var lastMoveTime = Date.now();
-
-        function validateSettings() {
-            if (warningTime > timeout) {
-                console.log("Warning time is longer than timeout. Warning is disabled.");
-                warningTime = 0;
-                warningDuration = 0;
-            }
+    <style>
+        #ContentPlaceHolder1_txtPasswordAuthenticate {
+            border: 1px solid #555;
         }
 
-        $(document).ready(function () {
-            validateSettings();
-            $(document).mousemove(function () {
-                hasWarn = false;
-                lastMoveTime = Date.now();
-
-            });
-
-            startTimeout();
-
-        });
-
-        function startTimeout() {
-
-            function getIdleTime() {
-                return Date.now() - lastMoveTime;
+            #ContentPlaceHolder1_txtPasswordAuthenticate:focus {
+                border: 3px solid #555;
             }
-
-            function hasReachTimeOut() {
-                return getIdleTime() > timeout;
-            }
-
-            function hasReachWarning() {
-                return getIdleTime() > warningTime;
-            }
-
-            function timeToRedirectInSeconds() {
-                return (timeout - getIdleTime()) / 1000;
-            }
-
-            function redirect() {
-                document.location = "LoginPanel.aspx";
-            }
-
-
-            function checkTimeout() {
-
-                if (warningTime != 0 && hasReachWarning() && !hasWarn) {
-                    hasWarn = true;
-                }
-                else if (hasReachTimeOut()) {
-
-                    //hiddenValue.value = 1;
-
-                    //if (hiddenValue.value == 1) {
-
-                        $('#myModal').modal('show');
-
-                        ////Prevent user from refreshing page by pressing F5
-                        //document.onkeydown = function () {
-                        //    switch (event.keyCode) {
-                        //        case 116: //F5 button
-                        //            event.returnValue = false;
-                        //            event.keyCode = 0;
-                        //            return false;
-                        //    }
-                        //}
-
-                        //Prevent user from pressing back button
-                        DisableBackButton();
-                        window.onload = DisableBackButton;
-                        window.onpageshow = function (evt) { if (evt.persisted) DisableBackButton() }
-                        window.onunload = function () { void (0) }
-
-                    }
-                    else {
-                        $('#myModal').modal('hide');
-                    }
-
-                }
-
-                $('#counter').text("Time to autoredirect " + timeToRedirectInSeconds() + " seconds");
-            }
-
-            setInterval(checkTimeout, 1000);
-        }
-
-        function DisableBackButton() {
-            window.history.forward()
-        }
-    </script>
-    <% } %>
+    </style>
 
     <!-- Pop up Modal for Session Timeout -->
     <div class="modal fade" id="myModal" role="dialog" data-backdrop="static" data-keyboard="false">
-        <div class="modal-dialog modal-sm">
+        <div class="modal-dialog modal-sm" style="min-width: 37%; z-index: 200;">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title" style="text-align: center; font-weight: bold;">Your account has been locked</h3>
+                    <h3 class="modal-title" style="text-align: center; margin: auto; font-weight: bold;">Your account has been locked</h3>
                 </div>
-                <div class="modal-body">
-                    <h4>To prove that you are the user <b><%: Context.User.Identity.Name  %> </b>...</h4>
+                <div class="modal-body" style="text-align: center; margin: auto;">
+                    <h4>To prove that you are <b><big><%: Context.User.Identity.Name  %></b></big>...</h4>
                     <p style="text-align: center;">Please enter your password in order to continue:</p>
                     <asp:TextBox ID="txtPasswordAuthenticate" runat="server" TextMode="Password" CssClass="textbox" Text=""></asp:TextBox>
                     <br />
@@ -207,8 +116,8 @@
                         <asp:Label ID="errormsgPasswordAuthenticate" runat="server" Text="Password is incorrect." Visible="false" ForeColor="#da337a"></asp:Label>
                     </p>
                 </div>
-                <div class="modal-footer" style="text-align: center;">
-                    <asp:Button ID="btnAuthenticate" class="btn btn-default" runat="server" Text="Authenticate" OnClick="btnAuthenticate_Click" CausesValidation="false" />
+                <div class="modal-footer" style="text-align: center; margin: auto;">
+                    <asp:Button ID="btnAuthenticate" class="btn btn-primary" runat="server" Text="Authenticate" OnClick="btnAuthenticate_Click" CausesValidation="false" />
                     <%--  <asp:Button ID="btnLogout" class="btn btn-default" runat="server" Text="Logout" PostBackUrl="~/Account/Login.aspx" />--%>
 
                     <br />
@@ -216,23 +125,22 @@
             </div>
         </div>
     </div>
-            <asp:HiddenField ID="hiddenValue" runat="server" Value="0" />
 
-    <div class="card-header">
+    <div class="card-header" style="z-index: 100; margin: auto;">
         <%--   <h4 class="card-title">Pending Submissions</h4>--%>
         <main style="display: inline-flex;">
             <asp:RadioButton ID="tab1" runat="server" GroupName="tabs" Checked="true" />
-            <div id="div_tab1" runat="server" style="z-index: 1050; background-color: #ff7558; margin-right: 3%;">
+            <div id="div_tab1" runat="server" style="z-index: 1050; background-color: #ff7558;">
                 <asp:LinkButton ID="label_tab1_pending" runat="server" OnClick="label_tab1_pending_Click"><label for="tab1">Pending</label></asp:LinkButton>
             </div>
 
             <asp:RadioButton ID="tab2" runat="server" GroupName="tabs" />
-            <div id="div_tab2" runat="server" style="background-color: #2087b0; margin-right: 3%; opacity: 0.3;">
+            <div id="div_tab2" runat="server" style="background-color: #2087b0; opacity: 0.3;">
                 <asp:LinkButton ID="label_tab2_approved" runat="server" OnClick="label_tab2_approved_Click"><label for="tab2">Approved</label></asp:LinkButton>
             </div>
 
             <asp:RadioButton ID="tab3" runat="server" GroupName="tabs" />
-            <div id="div_tab3" runat="server" style="background-color: #e14654; margin-right: 3%; opacity: 0.3;">
+            <div id="div_tab3" runat="server" style="background-color: #e14654; opacity: 0.3;">
                 <asp:LinkButton ID="label_tab3_rejected" runat="server" OnClick="label_tab3_rejected_Click"><label for="tab3">Rejected</label></asp:LinkButton>
             </div>
         </main>
@@ -270,7 +178,7 @@
                     <asp:TemplateField HeaderText="Submission Status">
                         <ItemTemplate>
                             <asp:DropDownList ID="dropdown_status" runat="server" AutoPostBack="true" OnSelectedIndexChanged="dropdown_status_SelectedIndexChanged"
-                                EnableViewState="true" ViewStateMode="Enabled" CssClass="btn btn-primary" Width="120" Font-Size="Small">
+                                EnableViewState="true" ViewStateMode="Enabled" CssClass="btn btn-warning" Width="120" Font-Size="Small">
                                 <asp:ListItem Text="Pending" Value="1"></asp:ListItem>
                                 <asp:ListItem Text="Approved" Value="2"></asp:ListItem>
                                 <asp:ListItem Text="Rejected" Value="3"></asp:ListItem>
@@ -282,7 +190,7 @@
                     <asp:TemplateField HeaderText="Delete Submisson">
                         <ItemTemplate>
                             <asp:Button Text="Delete Submission" ID="button_deleteSubmission" runat="server"
-                                CssClass="btn btn-warning" CommandName="DeleteSubmission"
+                                CssClass="btn btn-danger" CommandName="DeleteSubmission"
                                 UseSubmitBehavior="False" CommandArgument='<%# Eval("imagePath") %>' Font-Size="Small" />
                         </ItemTemplate>
                     </asp:TemplateField>
