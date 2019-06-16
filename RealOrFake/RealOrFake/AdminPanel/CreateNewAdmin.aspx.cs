@@ -10,17 +10,12 @@ using System.IO;
 
 namespace RealOrFake.AdminPanel
 {
-	public partial class CreateNewAdmin : System.Web.UI.Page
-	{
+    public partial class CreateNewAdmin : System.Web.UI.Page
+    {
         SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["FileDatabaseConnectionString1"].ConnectionString);
 
-        protected void Page_Load(object sender, EventArgs e)
-		{
-
-		}
-
-		protected void SubmitButton_Click(object sender, EventArgs e)
-		{
+        protected void SubmitButton_Click(object sender, EventArgs e)
+        {
 
             connection.Open();
             SqlCommand insertAdminDetailsCommand = new SqlCommand();
@@ -34,5 +29,12 @@ namespace RealOrFake.AdminPanel
             connection.Close();
             Response.Write("Admin has been added succeesfully");
         }
-	}
+
+
+        protected void resetBtn_Click(object sender, EventArgs e)
+        {
+            TextBox1.Text = String.Empty;
+            TextBox2.Text = String.Empty;
+        }
+    }
 }

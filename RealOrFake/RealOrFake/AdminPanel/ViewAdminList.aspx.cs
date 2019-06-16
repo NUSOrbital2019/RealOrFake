@@ -23,23 +23,16 @@ namespace RealOrFake.AdminPanel
             Response.Redirect("CreateNewAdmin.aspx");
 		}
 
-		protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
-		{
-
-		}
-
-        private void deleteSubmission(String imagePath)
+        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["FileDatabaseConnectionString1"].ConnectionString);
+            if (e.Row.RowType == DataControlRowType.DataRow) {
+                Control control = e.Row.Cells[2].Controls[0];
+                if (control is LinkButton) {
+                    ((LinkButton)control).OnClientClick = "return confirm('Are you sure you want to delete? This cannot undone.')";
 
-            connection.Open();
+                }
 
-            SqlCommand updateSubmissionStatusCommand = new SqlCommand("DELETE FROM Customer WHERE imagePath = @imagePath;", connection);
-            updateSubmissionStatusCommand.Parameters.AddWithValue("@imagePath", imagePath);
-
-            updateSubmissionStatusCommand.ExecuteNonQuery();
-            connection.Close();
+            }
         }
-
     }
 }
