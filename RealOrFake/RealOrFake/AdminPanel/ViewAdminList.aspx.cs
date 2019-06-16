@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
+using System.Configuration;
+using System.Data.SqlClient;
 
 namespace RealOrFake.AdminPanel
 {
@@ -26,9 +28,18 @@ namespace RealOrFake.AdminPanel
 
 		}
 
-		protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
-		{
+        private void deleteSubmission(String imagePath)
+        {
+            SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["FileDatabaseConnectionString1"].ConnectionString);
 
-		}
-	}
+            connection.Open();
+
+            SqlCommand updateSubmissionStatusCommand = new SqlCommand("DELETE FROM Customer WHERE imagePath = @imagePath;", connection);
+            updateSubmissionStatusCommand.Parameters.AddWithValue("@imagePath", imagePath);
+
+            updateSubmissionStatusCommand.ExecuteNonQuery();
+            connection.Close();
+        }
+
+    }
 }

@@ -9,7 +9,14 @@
 		<Columns>
 			<asp:BoundField DataField="AdminUserName" HeaderText="AdminUserName" ReadOnly="True" SortExpression="AdminUserName" />
 			<asp:BoundField DataField="AdminPassword" HeaderText="AdminPassword" SortExpression="AdminPassword" />
-		</Columns>
+		    <asp:TemplateField HeaderText="Delete Submisson">
+                        <ItemTemplate>
+                            <asp:Button Text="Delete Admin" ID="button_deleteAdmin" runat="server"
+                                CssClass="btn btn-warning" CommandName="button_deleteAdmin"
+                                UseSubmitBehavior="False" Font-Size="Small" />
+                        </ItemTemplate>
+            </asp:TemplateField>
+        </Columns>
 	</asp:GridView>
 	&nbsp;
 	<asp:SqlDataSource ID="AdminData" runat="server" ConnectionString="<%$ ConnectionStrings:FileDatabaseConnectionString1 %>" SelectCommand="SELECT * FROM [Admin]"></asp:SqlDataSource>

@@ -252,7 +252,7 @@
                 HeaderStyle-HorizontalAlign="Center" CellPadding="15" Font-Names="Helvetica"
                 HeaderStyle-ForeColor="White" HeaderStyle-Wrap="true" RowStyle-BorderColor="white"
                 RowStyle-HorizontalAlign="Center" DataSourceID="SqlDataSource1" Width="100%" AutoGenerateColumns="false"
-                OnRowCommand="GridView1_RowCommand" Font-Size="Small" OnRowDataBound="GridView1_RowDataBound">
+                OnRowCommand="GridView1_RowCommand" Font-Size="Small" OnRowDataBound="GridView1_RowDataBound" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
                 <Columns>
                     <asp:BoundField DataField="SubmissionDate" HeaderText="Submission Date" />
                     <asp:BoundField DataField="SubmissionId" HeaderText="Submission Id" />
