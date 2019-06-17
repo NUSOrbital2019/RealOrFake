@@ -21,5 +21,5 @@
 	<br />
 	<asp:Button ID="SubmitButton" runat="server" OnClick="SubmitButton_Click" Text="Submit" Height="30px" Width="80px" />
 &nbsp;&nbsp;&nbsp;&nbsp;
-    <asp:Button ID="resetBtn" runat="server" Text="Reset" Height="30px" OnClick="resetBtn_Click" Width="80px" />
+    <asp:Button ID="resetBtn" runat="server" Text="Reset" Height="30px" OnClick="resetBtn_Click" Width="80px" CausesValidation="false" />
 </asp:Content>

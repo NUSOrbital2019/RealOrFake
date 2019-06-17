@@ -126,7 +126,7 @@
         </div>
     </div>
 
-    <div class="card-header" style="z-index: 100; margin: auto;">
+    <div class="card-header" style="z-index: 100;">
         <%--   <h4 class="card-title">Pending Submissions</h4>--%>
         <main style="display: inline-flex;">
             <asp:RadioButton ID="tab1" runat="server" GroupName="tabs" Checked="true" />
@@ -160,7 +160,7 @@
                 HeaderStyle-HorizontalAlign="Center" CellPadding="15" Font-Names="Helvetica"
                 HeaderStyle-ForeColor="White" HeaderStyle-Wrap="true" RowStyle-BorderColor="white"
                 RowStyle-HorizontalAlign="Center" DataSourceID="SqlDataSource1" Width="100%" AutoGenerateColumns="false"
-                OnRowCommand="GridView1_RowCommand" Font-Size="Small" OnRowDataBound="GridView1_RowDataBound" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
+                OnRowCommand="GridView1_RowCommand" Font-Size="Small" OnRowDataBound="GridView1_RowDataBound">
                 <Columns>
                     <asp:BoundField DataField="SubmissionDate" HeaderText="Submission Date" />
                     <asp:BoundField DataField="SubmissionId" HeaderText="Submission Id" />
