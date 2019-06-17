@@ -1,29 +1,125 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/AdminPanel/Admin.master" AutoEventWireup="true" CodeBehind="ViewAdminList.aspx.cs" Inherits="RealOrFake.AdminPanel.ViewAdminList" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    &nbsp;<asp:Button ID="CreateButton" runat="server" Text="Create" OnClick="CreateButton_Click" Height="30px" Width="65px" />
-	<br />
-	<br />
-	<asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="AdminUserName" DataSourceID="AdminData" Height="179px" Width="505px" OnRowDataBound="GridView1_RowDataBound">
-		<Columns>
-			<asp:BoundField DataField="AdminUserName" HeaderText="AdminUserName" ReadOnly="True" SortExpression="AdminUserName" />
-			<asp:BoundField DataField="AdminPassword" HeaderText="AdminPassword" SortExpression="AdminPassword" />
-            <asp:CommandField ButtonType="Button" ShowDeleteButton="True" ShowEditButton="True" />
-        </Columns>
-	</asp:GridView>
-	&nbsp;
-	<asp:SqlDataSource ID="AdminData" runat="server" ConnectionString="<%$ ConnectionStrings:FileDatabaseConnectionString1 %>" SelectCommand="SELECT * FROM [Admin]" DeleteCommand="DELETE FROM [Admin] WHERE [AdminUserName] = @AdminUserName" InsertCommand="INSERT INTO [Admin] ([AdminUserName], [AdminPassword]) VALUES (@AdminUserName, @AdminPassword)" UpdateCommand="UPDATE [Admin] SET [AdminPassword] = @AdminPassword WHERE [AdminUserName] = @AdminUserName">
-        <DeleteParameters>
-            <asp:Parameter Name="AdminUserName" Type="String" />
-        </DeleteParameters>
-        <InsertParameters>
-            <asp:Parameter Name="AdminUserName" Type="String" />
-            <asp:Parameter Name="AdminPassword" Type="String" />
-        </InsertParameters>
-        <UpdateParameters>
-            <asp:Parameter Name="AdminPassword" Type="String" />
-            <asp:Parameter Name="AdminUserName" Type="String" />
-        </UpdateParameters>
-    </asp:SqlDataSource>
+    <style>
+        input.btn.btn-success {
+            margin: 2%;
+        }
+
+        .textbox {
+            border: 1px solid #c4c4c4;
+            padding: 4px 4px 4px 4px;
+            box-shadow: 0px 0px 8px #d9d9d9;
+            -moz-box-shadow: 0px 0px 8px #d9d9d9;
+            -webkit-box-shadow: 0px 0px 8px #d9d9d9;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+        }
+
+        td:nth-child(3) input {
+            margin: 2%;
+            width: 100%;
+        }
+    </style>
+
+    <div class="card-header">
+        <h4 class="card-title">Admin Control Panel</h4>
+    </div>
+
+    <div class="card-body" style="padding: 1.25rem;">
+        <div class="row">
+
+            <div class="col-md-5 pr-1">
+                <div class="form-group">
+
+                    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="AdminUserName" DataSourceID="AdminData"
+                        Height="179px" Width="245%" OnRowDataBound="GridView1_RowDataBound" BorderColor="#F0F0F0" HeaderStyle-BackColor="#14827d" RowStyle-BackColor="#f3f3f3" HeaderStyle-HorizontalAlign="Center" CellPadding="15" Font-Names="Helvetica"
+                        HeaderStyle-ForeColor="White" HeaderStyle-Wrap="true" RowStyle-BorderColor="white"
+                        RowStyle-HorizontalAlign="Center" OnRowEditing="GridView1_RowEditing" OnRowUpdating="GridView1_RowUpdating"
+                        OnRowCancelingEdit="GridView1_RowCancelingEdit" OnRowDeleting="GridView1_RowDeleting">
+                        <Columns>
+
+                            <asp:TemplateField HeaderText="Username">
+                                <ItemTemplate>
+                                    <asp:Label ID="lbl_AdminUserName" runat="server" Text='<%#Eval("AdminUserName") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+
+                            <asp:TemplateField HeaderText="Password">
+                                <ItemTemplate>
+                                    <asp:Label ID="lbl_AdminPassword" runat="server" Text='<%#Eval("AdminPassword") %>'></asp:Label>
+                                </ItemTemplate>
+
+                                <EditItemTemplate>
+                                    <asp:TextBox ID="txt_AdminPassword" runat="server" Text='<%#Eval("AdminPassword") %>' CssClass="textbox"></asp:TextBox>
+                                </EditItemTemplate>
+                            </asp:TemplateField>
+
+                            <asp:TemplateField>
+                                <ItemTemplate>
+                                    <asp:Button Text="Edit" ID="button_edit" runat="server"
+                                        CssClass="btn btn-danger" CommandName="Edit"
+                                        UseSubmitBehavior="False" Font-Size="Small" />
+
+                                    <asp:Button Text="Delete" ID="button_delete" runat="server"
+                                        CssClass="btn btn-danger" CommandName="Delete"
+                                        UseSubmitBehavior="False" Font-Size="Small" />
+                                </ItemTemplate>
+                                <EditItemTemplate>
+                                    <asp:Button Text="Update" ID="button_update" runat="server"
+                                        CssClass="btn btn-danger" CommandName="Update"
+                                        UseSubmitBehavior="False" Font-Size="Small" />
+                                    <asp:Button Text="Cancel" ID="button_cancel" runat="server"
+                                        CssClass="btn btn-danger" CommandName="Cancel"
+                                        UseSubmitBehavior="False" Font-Size="Small" />
+                                </EditItemTemplate>
+                            </asp:TemplateField>
+
+                            <%--<asp:BoundField DataField="AdminUserName" HeaderText="Username" ReadOnly="True" SortExpression="AdminUserName" />--%>
+                            <%--<asp:BoundField DataField="AdminPassword" HeaderText="Password" SortExpression="AdminPassword" />--%>
+
+                            <%--                            <asp:CommandField ButtonType="Button" ShowDeleteButton="True" ShowEditButton="True"
+                                ControlStyle-CssClass="btn btn-success" ItemStyle-HorizontalAlign="left" />--%>
+                        </Columns>
+                    </asp:GridView>
+                    <asp:SqlDataSource ID="AdminData" runat="server" ConnectionString="<%$ ConnectionStrings:FileDatabaseConnectionString1 %>"
+                        SelectCommand="SELECT * FROM [Admin]">
+                        <%-- DeleteCommand="DELETE FROM [Admin] WHERE [AdminUserName] = @AdminUserName"
+                        InsertCommand="INSERT INTO [Admin] ([AdminUserName], [AdminPassword]) VALUES (@AdminUserName, @AdminPassword)"
+                            UpdateCommand="UPDATE [Admin] SET [AdminPassword] = @AdminPassword WHERE [AdminUserName] = @AdminUserName" --%>
+
+                        <%--             <DeleteParameters>
+                            <asp:Parameter Name="AdminUserName" Type="String" />
+                        </DeleteParameters>
+
+                        <InsertParameters>
+                            <asp:Parameter Name="AdminUserName" Type="String" />
+                            <asp:Parameter Name="AdminPassword" Type="String" />
+                        </InsertParameters>
+
+                        <UpdateParameters>
+                            <asp:Parameter Name="AdminPassword" Type="String" />
+                            <asp:Parameter Name="AdminUserName" Type="String" />
+                        </UpdateParameters>--%>
+
+                    </asp:SqlDataSource>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row" style="margin-left: 2.5%;">
+        <div style="float: right;">
+            <label style="font-size: 16px;">Admin not found here? </label>
+            &nbsp; &nbsp; &nbsp;
+            <asp:Button ID="CreateButton" runat="server" Text="Create New Admin" OnClick="CreateButton_Click" CssClass="btn btn-primary" />
+        </div>
+    </div>
+    <br />
+    <br />
+
 </asp:Content>

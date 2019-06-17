@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -36,7 +30,7 @@ namespace RealOrFake.AdminPanel
             dbSalt = ValidateBase64EncodedString(dbSalt);
 
             string inputPasswordHash = ComputeHash(TextBox2.Text, new SHA512CryptoServiceProvider(), Convert.FromBase64String(dbSalt));
-            
+
             //Insert into database
             connection.Open();
             SqlCommand insertAdminDetailsCommand = new SqlCommand();
@@ -48,8 +42,8 @@ namespace RealOrFake.AdminPanel
             insertAdminDetailsCommand.Connection = connection;
             insertAdminDetailsCommand.ExecuteNonQuery();
             connection.Close();
-            
-            ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Admin has been added successfully.');", true);
+
+            ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('User [" + TextBox1.Text + "] has been added successfully.');", true);
         }
 
 
