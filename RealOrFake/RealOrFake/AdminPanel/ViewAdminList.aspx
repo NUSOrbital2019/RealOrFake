@@ -25,6 +25,32 @@
         }
     </style>
 
+    <!-- Pop up Modal for Session Timeout -->
+    <div class="modal fade" id="myModal" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-sm" style="min-width: 37%; z-index: 200;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" style="text-align: center; margin: auto; font-weight: bold;">Your account has been locked</h3>
+                </div>
+                <div class="modal-body" style="text-align: center; margin: auto;">
+                    <h4>To prove that you are <b><big><%: Context.User.Identity.Name  %></b></big>...</h4>
+                    <p style="text-align: center;">Please enter your password in order to continue:</p>
+                    <asp:TextBox ID="txtPasswordAuthenticate" runat="server" TextMode="Password" CssClass="textbox" Text=""></asp:TextBox>
+                    <br />
+                    <p style="text-align: center;">
+                        <asp:Label ID="errormsgPasswordAuthenticate" runat="server" Text="Password is incorrect." Visible="false" ForeColor="#da337a"></asp:Label>
+                    </p>
+                </div>
+                <div class="modal-footer" style="text-align: center; margin: auto;">
+                    <asp:Button ID="btnAuthenticate" class="btn btn-primary" runat="server" Text="Authenticate" OnClick="btnAuthenticate_Click" CausesValidation="false" />
+                    <%--  <asp:Button ID="btnLogout" class="btn btn-default" runat="server" Text="Logout" PostBackUrl="~/Account/Login.aspx" />--%>
+
+                    <br />
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="card-header">
         <h4 class="card-title">Admin Control Panel</h4>
     </div>
@@ -107,9 +133,16 @@
 
                     </asp:SqlDataSource>
                 </div>
+
             </div>
         </div>
 
+    </div>
+
+    <div class="row" style="margin-left: 2.5%; margin-top: -3%">
+        <div>
+            <p style="font-size: small;">Note: Please update password in plain-text. However, password will be displayed otherwise for security purposes.</p>
+        </div>
     </div>
 
     <div class="row" style="margin-left: 2.5%;">

@@ -305,7 +305,6 @@
     <Content Include="AdminPanel\Default.aspx" />
     <Content Include="AdminPanel\LoginPanel.aspx" />
     <Content Include="AdminPanel\ViewAdminList.aspx" />
-    <Content Include="AdminPanel\ViewUserProfile.aspx" />
     <Content Include="App_Data\RealOrFakeDB.mdf" />
     <Content Include="App_Data\RealOrFakeDB_log.ldf">
       <DependentUpon>RealOrFakeDB.mdf</DependentUpon>
@@ -467,13 +466,6 @@
     </Compile>
     <Compile Include="AdminPanel\ViewAdminList.aspx.designer.cs">
       <DependentUpon>ViewAdminList.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="AdminPanel\ViewUserProfile.aspx.cs">
-      <DependentUpon>ViewUserProfile.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AdminPanel\ViewUserProfile.aspx.designer.cs">
-      <DependentUpon>ViewUserProfile.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />

@@ -5,7 +5,6 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <style>
         td {
-            /*max-width: 300px;*/
             overflow: auto;
         }
 
@@ -69,8 +68,6 @@
             }
 
         #ContentPlaceHolder1_div_tab1, #ContentPlaceHolder1_div_tab2, #ContentPlaceHolder1_div_tab3 {
-            /*border-top: 3px solid orange;*/
-            /*border-bottom: 1px solid #fff;*/
             box-shadow: 5px 3px 3px black;
             border-radius: 5px;
             font-size: medium;
@@ -91,13 +88,14 @@
     </style>
 
     <style>
-        #ContentPlaceHolder1_txtPasswordAuthenticate {
-            border: 1px solid #555;
+        .textbox {
+            border: 1px solid #c4c4c4;
+            font-size: large;
+            padding: 4px 4px 4px 4px;
+            box-shadow: 0px 0px 8px #d9d9d9;
+            -moz-box-shadow: 0px 0px 8px #d9d9d9;
+            -webkit-box-shadow: 0px 0px 8px #d9d9d9;
         }
-
-            #ContentPlaceHolder1_txtPasswordAuthenticate:focus {
-                border: 3px solid #555;
-            }
     </style>
 
     <!-- Pop up Modal for Session Timeout -->
@@ -118,8 +116,6 @@
                 </div>
                 <div class="modal-footer" style="text-align: center; margin: auto;">
                     <asp:Button ID="btnAuthenticate" class="btn btn-primary" runat="server" Text="Authenticate" OnClick="btnAuthenticate_Click" CausesValidation="false" />
-                    <%--  <asp:Button ID="btnLogout" class="btn btn-default" runat="server" Text="Logout" PostBackUrl="~/Account/Login.aspx" />--%>
-
                     <br />
                 </div>
             </div>
@@ -127,7 +123,6 @@
     </div>
 
     <div class="card-header" style="z-index: 100;">
-        <%--   <h4 class="card-title">Pending Submissions</h4>--%>
         <main style="display: inline-flex;">
             <asp:RadioButton ID="tab1" runat="server" GroupName="tabs" Checked="true" />
             <div id="div_tab1" runat="server" style="z-index: 1050; background-color: #ff7558;">
@@ -145,7 +140,6 @@
             </div>
         </main>
     </div>
-
 
 
     <div class="card-body" style="padding: 1.25rem;">
@@ -182,7 +176,6 @@
                                 <asp:ListItem Text="Pending" Value="1"></asp:ListItem>
                                 <asp:ListItem Text="Approved" Value="2"></asp:ListItem>
                                 <asp:ListItem Text="Rejected" Value="3"></asp:ListItem>
-                                <%--<asp:ListItem Text="Irrelevant" Value="4"></asp:ListItem>--%>
                             </asp:DropDownList>
                         </ItemTemplate>
                     </asp:TemplateField>

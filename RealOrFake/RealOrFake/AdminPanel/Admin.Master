@@ -48,50 +48,8 @@
                         hasWarn = false;
                     }, time);
                 }
-
-                startTimeout();
             });
         });
-
-        function startTimeout() {
-            function getIdleTime() {
-                return Date.now() - lastMoveTime;
-            }
-
-            function hasReachTimeOut() {
-                return getIdleTime() > timeout;
-            }
-
-            //function hasReachWarning() {
-            //    return getIdleTime() > warningTime;
-            //}
-
-            function checkTimeout() {
-
-                if (hasReachTimeOut()) {
-                    $('#myModal').modal('show');
-
-                    //Prevent user from refreshing page by pressing F5
-                    document.onkeydown = function () {
-                        switch (event.keyCode) {
-                            case 116: //F5 button
-                                event.returnValue = false;
-                                event.keyCode = 0;
-                                return false;
-                        }
-                    }
-
-                    //Prevent user from pressing back button
-                    DisableBackButton();
-                    window.onload = DisableBackButton;
-                    window.onpageshow = function (evt) { if (evt.persisted) DisableBackButton() }
-                    window.onunload = function () { void (0) }
-                }
-
-            }
-
-            setInterval(checkTimeout, 1000);
-        }
     </script>
     <% } %>
 
