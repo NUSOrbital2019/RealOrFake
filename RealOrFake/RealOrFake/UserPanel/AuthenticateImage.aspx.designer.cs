@@ -49,6 +49,24 @@ namespace RealOrFake.UserPanel {
         protected global::System.Web.UI.WebControls.TextBox textbox_email;
         
         /// <summary>
+        /// label_notes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label label_notes;
+        
+        /// <summary>
+        /// textbox_notes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox textbox_notes;
+        
+        /// <summary>
         /// FileUpload1 control.
         /// </summary>
         /// <remarks>

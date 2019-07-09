@@ -35,7 +35,7 @@
     </style>
     <h1 class="main-title">Authenticate Image</h1>
     <div style="text-align: center !important; margin: auto !important; max-width: 50%;">
-        <p>Please ensure that you have look through the instructions before uploading an image.</p>
+        <p>Please look through the instructions before submitting a request.</p>
 
         <div>
             <asp:Label ID="label_name" runat="server">Name</asp:Label>
@@ -48,9 +48,12 @@
             <asp:TextBox ID="textbox_email" placeholder="Your email.." runat="server"></asp:TextBox>
             <br />
             <asp:RequiredFieldValidator runat="server" ErrorMessage="Email is required." ForeColor="red" ControlToValidate="textbox_email" Display="Dynamic"></asp:RequiredFieldValidator>
-
             <asp:RegularExpressionValidator runat="server" ValidationExpression="^([\w][\w\.\-]+)@([a-z]+)(((\.[A-z]{2,3}))+)$" ControlToValidate="textbox_email" ForeColor="red" ErrorMessage="Email address is invalid." Display="Dynamic"></asp:RegularExpressionValidator>
+            <br />
 
+            <asp:Label ID="label_notes" runat="server">Notes</asp:Label>
+            <asp:TextBox ID="textbox_notes" placeholder="Additional information.. (Optional)" runat="server" TextMode="MultiLine"></asp:TextBox>
+            <br />
             <br />
 
             <div style="margin: auto; display: inline !important">

@@ -33,7 +33,7 @@
     <br />
     In the meantime, we realize this is a valuable service and would like to help consumers with pre-purchase authentications, as well as offer post-purchase authentications if you suspect you bought a fake, or just need peace of mind. 
     <br />
-    All of our associates are 100% against fakes because of their ties to child labor, terrorism, human trafficking, drugs, murder and many more violent crimes. 
+    All of our associates are 100% against fakes because of their ties to child labor, terrorism, human trafficking, drugs, murder and violent crimes. 
     <br />
     Not to mention they are highly illegal. 
     <br />
@@ -57,9 +57,9 @@
 
     RealOrFake can also help you with verification paperwork should you need to file a claim with your credit card company or a website. 
     <br />
-    If at all possible, always Authenticate First before you buy. 
+    If at all possible, always authenticate with RealOrFake first before you buy. 
     <br />
-    Please see our Pre-Sale Evaluation to alleviate the stress before a purchase.
+    We are highly experienced and able to know if a product is counterfeit easily.
 
     <br />
     <br />

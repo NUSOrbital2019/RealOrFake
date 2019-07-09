@@ -204,7 +204,7 @@ namespace RealOrFake.AdminPanel
         private void BindingGridView()
         {
             GridView1.EmptyDataText = "There is currently no " + Session["currentStatusTab"].ToString() + " submissions.";
-            SqlDataSource1.SelectCommand = "SELECT [SubmissionId], [Email], [Name], [ImagePath], [SubmissionDate] FROM [Customer] WHERE(SubmissionStatus = '" + Session["currentStatusTab"].ToString() + "'); ";
+            SqlDataSource1.SelectCommand = "SELECT [SubmissionId], [Email], [Name], [ImagePath], [SubmissionDate], [Notes] FROM [Customer] WHERE(SubmissionStatus = '" + Session["currentStatusTab"].ToString() + "'); ";
             GridView1.DataBind();
         }
 

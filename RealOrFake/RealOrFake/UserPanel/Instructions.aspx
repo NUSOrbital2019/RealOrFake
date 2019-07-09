@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h1 class="main-title">Instructions</h1>
 
-    The photos required will vary by brand and we will ask for specific photos if what we need is not shown. 
+    The photos required will vary by brand and we will ask for further specific photos if what we need is not shown. 
     <br />
     Please ensure that photos are taken in natural light, no flash, at a straight on angle.  
     <br />

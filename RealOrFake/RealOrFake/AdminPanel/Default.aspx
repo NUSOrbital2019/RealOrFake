@@ -147,14 +147,14 @@
         <div class="row">
 
             <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ConnectionStrings:FileDatabaseConnectionString1 %>"
-                SelectCommand="SELECT [SubmissionId], [Email], [Name], [ImagePath], [SubmissionDate] FROM [Customer]
+                SelectCommand="SELECT [SubmissionId], [Email], [Name], [ImagePath], [SubmissionDate], [Notes] FROM [Customer]
         WHERE (SubmissionStatus = 'Pending');"></asp:SqlDataSource>
 
-            <asp:GridView ID="GridView1" runat="server" BorderColor="#F0F0F0" HeaderStyle-BackColor="#146882" RowStyle-BackColor="#f3f3f3" RowStyle-Font-Size="Small"
+            <asp:GridView ID="GridView1" runat="server" BorderColor="#F0F0F0" HeaderStyle-BackColor="#146882" RowStyle-BackColor="#f3f3f3" RowStyle-Font-Size="Smaller"
                 HeaderStyle-HorizontalAlign="Center" CellPadding="15" Font-Names="Helvetica"
                 HeaderStyle-ForeColor="White" HeaderStyle-Wrap="true" RowStyle-BorderColor="white"
                 RowStyle-HorizontalAlign="Center" DataSourceID="SqlDataSource1" Width="100%" AutoGenerateColumns="false"
-                OnRowCommand="GridView1_RowCommand" Font-Size="Small" OnRowDataBound="GridView1_RowDataBound">
+                OnRowCommand="GridView1_RowCommand" Font-Size="Small" OnRowDataBound="GridView1_RowDataBound" HeaderStyle-Font-Size="Smaller">
                 <Columns>
                     <asp:BoundField DataField="SubmissionDate" HeaderText="Submission Date" />
                     <asp:BoundField DataField="SubmissionId" HeaderText="Submission Id" />
@@ -168,11 +168,11 @@
                                 CommandArgument='<%# "/Resources/ImagesForAuthentication/" + Eval("SubmissionId") + "-" + Eval("Email") + ".jpg" %>' />
                         </ItemTemplate>
                     </asp:TemplateField>
-
+                    <asp:BoundField DataField="Notes" HeaderText="Notes" ItemStyle-Width="120" />
                     <asp:TemplateField HeaderText="Submission Status">
                         <ItemTemplate>
                             <asp:DropDownList ID="dropdown_status" runat="server" AutoPostBack="true" OnSelectedIndexChanged="dropdown_status_SelectedIndexChanged"
-                                EnableViewState="true" ViewStateMode="Enabled" CssClass="btn btn-warning" Width="120" Font-Size="Small">
+                                EnableViewState="true" ViewStateMode="Enabled" CssClass="btn btn-warning" Width="100" Font-Size="Smaller" Font-Bold="true">
                                 <asp:ListItem Text="Pending" Value="1"></asp:ListItem>
                                 <asp:ListItem Text="Approved" Value="2"></asp:ListItem>
                                 <asp:ListItem Text="Rejected" Value="3"></asp:ListItem>
@@ -184,7 +184,7 @@
                         <ItemTemplate>
                             <asp:Button Text="Delete Submission" ID="button_deleteSubmission" runat="server"
                                 CssClass="btn btn-danger" CommandName="DeleteSubmission"
-                                UseSubmitBehavior="False" CommandArgument='<%# Eval("imagePath") %>' Font-Size="Small" />
+                                UseSubmitBehavior="False" CommandArgument='<%# Eval("imagePath") %>' Font-Size="Smaller" Font-Bold="true" />
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>
